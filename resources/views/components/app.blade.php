@@ -12,7 +12,7 @@
 
     <x-navbar />
 
-    <main class="px-8 md:px-16 lg:px-24 pb-8 mt-4 max-h-full overflow-y-scroll h-full flex-1">
+    <main class="pb-8 max-h-full overflow-y-scroll h-full flex-1">
         {{ $slot }}
     </main>
 

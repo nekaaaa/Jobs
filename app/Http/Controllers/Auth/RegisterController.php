@@ -11,29 +11,20 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|confirmed',
-            'employer_name' => 'required|unique:employers,name',
-            'employer_logo' => 'required|image'
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|confirmed|min:8',
+            'company_id' => 'sometimes|required|exists:companies,id',
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'company_id' => 0,
         ]);
 
         auth()->login($user);
-
-        $logoPath = $request->employer_logo->store('logos');
-
-        $user->employer()->create([
-            'name' => $request->employer_name,
-            'logo_path' => 'storage/'.$logoPath,
-            'user_id' => auth()->user()->id,
-        ]);
-
         $request->session()->regenerate();
 
         return redirect('/');

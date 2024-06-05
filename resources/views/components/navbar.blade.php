@@ -7,13 +7,17 @@
 
     <div class="space-x-6 font-bold">
         <a href="/">Jobs</a>
-        <a href="#">Salaries</a>
-        <a href="#">Companies</a>
+        <a href="/companies">Companies</a>
     </div>
 
     @auth
         <div class="space-x-6 font-bold flex">
-            <a href="/jobs/create">Post a Job</a>
+            @if(auth()->user()->company_id !== null)
+                <a href="/jobs/manage">Manage Jobs</a>
+                <a href="/jobs/create">Post a Job</a>
+            @else
+                <a href="/companies/create">Register a Company</a>
+            @endif
 
             <form method="POST" action="/logout">
                 @csrf
