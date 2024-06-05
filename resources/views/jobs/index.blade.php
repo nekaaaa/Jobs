@@ -55,7 +55,9 @@
         @endif
 
         @forelse($jobs as $job)
-            <x-job-card-wide :$job/>
+            <div class="mb-4">
+                <x-job-card-wide :$job/>
+            </div>
         @empty
             @if($q !== null)
                 <div class="w-full flex flex-col justify-center">

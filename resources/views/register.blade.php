@@ -10,8 +10,8 @@
 
                 <x-forms.input name="email" label="Email" placeholder="jamesbrooks@gmail.com"/>
 
-                <x-forms.input name="password" label="Password" placeholder="••••••" type="password"/>
-                <x-forms.input name="password_confirmation" label="Password Confirmation" placeholder="••••••" type="password"/>
+                <x-forms.input name="password" label="Password" placeholder="••••••••" type="password"/>
+                <x-forms.input name="password_confirmation" label="Password Confirmation" placeholder="••••••••" type="password"/>
                 <a class="hover:underline" href="/login">Already have an account?</a>
             </div>
             <x-forms.button class="mt-4">Register</x-forms.button>
